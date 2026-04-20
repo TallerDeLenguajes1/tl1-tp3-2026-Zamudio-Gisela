@@ -14,6 +14,19 @@ void MostrarPersonas(char *v[], int num)
     }
 }
 
+void BuscarNombre(char *v[], int num, int i)
+{
+    printf("\n");
+    if ((i - 1) >= 0 && (i - 1) <= num)
+    {
+        puts(v[i - 1]);
+    }
+    else
+    {
+        puts("No se encontro el valor buscado\n");
+    }
+}
+
 int main()
 {
     char buff[TAMA];
@@ -31,6 +44,7 @@ int main()
 
     // USANDO LA FUNCIONES:
     MostrarPersonas(V, N);
+    BuscarNombre(V, N, 3);
 
     return 0;
 }
