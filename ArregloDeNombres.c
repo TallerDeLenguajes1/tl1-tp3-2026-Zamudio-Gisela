@@ -14,6 +14,28 @@ void MostrarPersonas(char *v[], int num)
     }
 }
 
+void BuscarNombre(char *v[], int num, char *palabra)
+{
+    char *encontrado;
+    int control = 0;
+
+    for (int i = 0; i < num; i++)
+    {
+        encontrado = strstr(v[i], palabra);
+
+        if (encontrado)
+        {
+            puts(v[i]);
+            control++;
+        }
+    }
+
+    if (control == 0)
+    {
+        puts("-1");
+    }
+}
+
 int main()
 {
     char buff[TAMA];
@@ -30,7 +52,13 @@ int main()
     }
 
     // USANDO LA FUNCIONES:
-    MostrarPersonas(V, N);
+    // MostrarPersonas(V, N);
+
+    printf("Ingrese el nombre que desea buscar:\n");
+    char *buscado;
+    gets(buscado);
+
+    //BuscarNombre(V, N, buscado);
 
     return 0;
 }
