@@ -53,8 +53,6 @@ int main()
 {
     char buff[TAMA];
     char *V[N];
-    char *buscado; // Puntero usado para la funcion "BuscarNombrePorPalabra"
-    int posicion;
 
     printf("*** Ingrese %d nombres de personas ***\n", N);
     // Carga de nombres:
@@ -68,17 +66,33 @@ int main()
     }
 
     // USANDO LA FUNCIONES:
-    MostrarPersonas(V, N); // Muestra todos los nmbres cargados
+    MostrarPersonas(V, N); // Muestra todos los nombres cargados, solo para control
 
-    printf("*** Ingrese el numero de la posicion del nombre que quiere ver ***\n");
-    scanf("%d", &posicion);
-    BuscarNombrePorID(V, N, posicion); // Muestra nombre almacenado en V[posicion], si existe
+    printf("----------- Busqueda por ID (posicion) o por Nombre (parcial o completo) -------------\n");
+    int eleccion;
+    do
+    {
+        printf("    Para busqueda por ID presione -------->   1\n");
+        printf("    Para busqueda por Nombre presione ---->   2\n");
+        scanf("%d", &eleccion);
 
-    printf("*** Ingrese el nombre que desea buscar ***\n");
-    fflush(stdin);
-    gets(buscado);
+    } while (eleccion != 1 && eleccion != 2);
 
-    BuscarNombrePorPalabra(V, N, buscado); // Muestra nombre que coincide con "buscado", si hubiera
+    if (eleccion == 1)
+    {
+        int posicion;
+        printf("*** Ingrese el numero de la posicion del nombre que quiere ver ***\n");
+        scanf("%d", &posicion);
+        BuscarNombrePorID(V, N, posicion); // Muestra nombre almacenado en V[posicion], si existe
+    }
+    else
+    {
+        char *buscado; // Puntero usado para la funcion "BuscarNombrePorPalabra"
+        printf("*** Ingrese el Nombre que desea buscar ***\n");
+        fflush(stdin);
+        gets(buscado);
+        BuscarNombrePorPalabra(V, N, buscado); // Muestra nombre que coincide con "buscado", si hubiera
+    }
 
     return 0;
 }
